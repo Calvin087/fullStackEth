@@ -1,4 +1,5 @@
 require("@nomiclabs/hardhat-waffle");
+require("dotenv").config();
 
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
@@ -17,6 +18,17 @@ task("accounts", "Prints the list of accounts", async () => {
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
-  solidity: "0.7.3",
+  solidity: "0.8.3",
+  paths: {
+    artifacts: "./src/artifacts",
+  },
+  networks: {
+    hardhat: {
+      chainId: 1337,
+    },
+    ropsten: {
+      url: "https://ropsten.infura.io/v3/3a929fd49a854f088252a6f7a6a3d1c4",
+      accounts: [`0x${process.env.REACT_APP_ACCOUNT_KEY}`],
+    },
+  },
 };
-
